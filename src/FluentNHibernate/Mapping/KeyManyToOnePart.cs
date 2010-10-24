@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using FluentNHibernate.MappingModel;
 using FluentNHibernate.MappingModel.Identity;
 
 namespace FluentNHibernate.Mapping
@@ -52,6 +53,23 @@ namespace FluentNHibernate.Mapping
         public KeyManyToOnePart Name(string name)
         {
             mapping.Name = name;
+            return this;
+        }
+
+        public KeyManyToOnePart Type<T>()
+        {
+            return Type(typeof(T));
+        }
+
+        public KeyManyToOnePart Type(Type type)
+        {
+            mapping.Class = new TypeReference(type);
+            return this;
+        }
+
+        public KeyManyToOnePart Type(string type)
+        {
+            mapping.Class = new TypeReference(type);
             return this;
         }
 

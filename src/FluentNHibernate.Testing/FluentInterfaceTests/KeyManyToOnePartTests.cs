@@ -60,6 +60,13 @@ namespace FluentNHibernate.Testing.FluentInterfaceTests
             mapping.NotFound.ShouldEqual("ignore");
         }
 
+        [Test]
+        public void ShouldSetType()
+        {
+            keyPart.Type<string>();
+            mapping.Class.ShouldEqual(new TypeReference(typeof(string)));
+        }
+
 
 
     }
